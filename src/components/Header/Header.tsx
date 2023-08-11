@@ -1,8 +1,41 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const HeaderContainer = styled.nav`
+  width: 100%;
+  height: 60px;
+  display: flex;
+  
+  div{
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 0 auto;
+
+    span{
+      display: flex;
+      align-items: center;
+
+      a{
+        font-size: 1.4rem;
+      }
+
+      ul{
+        display: flex;
+        gap: 10px;
+
+        li a{
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+`
 export default function Header() {
   return (
-    <nav>
+    <HeaderContainer>
       <div>
         <span>
           <a href="/">DashPay</a>
@@ -24,6 +57,6 @@ export default function Header() {
           </ul>
         </span>
       </div>      
-    </nav>
+    </HeaderContainer>
   )
 }
