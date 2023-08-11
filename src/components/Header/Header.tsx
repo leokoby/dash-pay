@@ -28,18 +28,39 @@ const HeaderContainer = styled.nav`
 
         li a{
           font-size: 1rem;
+          color: var(--color-gray-2);
+          transition: all 200ms ease-in-out;
+          padding: 0 10px;
+          border: 1px dashed transparent;
+
+          &:hover{
+            color: var(--color-gray-1);
+            border: 1px var(--color-gray-1) dashed;
+          }
         }
       }
     }
   }
 `
 export default function Header() {
+  const [isMobile, setIsMobile] = React.useState(false)
+
+  window.addEventListener('resize', () => {
+    setIsMobile(window.innerWidth < 1000)
+  })
+
+
   return (
     <HeaderContainer>
       <div>
         <span>
           <a href="/">DashPay</a>
         </span>
+        {isMobile && (
+          <div>
+            menumobile
+          </div>
+        )}
         <span>
           <ul>
             <li>

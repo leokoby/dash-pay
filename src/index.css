@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 
+:root{
+  --color-black: #000;
+  --color-gray-1: #303030;
+  --color-gray-2: #696969;
+  --color-gray-3: #cacaca;
+  --color-gray-4: #fbfbfb;
+  --bg-gradient: linear-gradient(180deg, #FFF 0%, #ECECEC 100%);
+}
+
 *{
   box-sizing: border-box;
   text-decoration: none;
@@ -7,6 +16,10 @@
   color: inherit;
   margin: 0;
   padding: 0;
-
+  
   font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+  background: var(--bg-gradient) no-repeat;
 }
