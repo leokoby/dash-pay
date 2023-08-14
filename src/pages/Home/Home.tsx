@@ -25,6 +25,12 @@ const HomeContainer = styled.div`
       font-weight: 400;
     }
 
+    small{
+      strong{
+        cursor: pointer;
+      }
+    }
+
     div{
       display: flex;
       flex-direction:row;
@@ -80,7 +86,7 @@ export default function Home() {
         <h1>Welcome to DashPay</h1>
         <h3>Put yours bills that you need pay here</h3>
         <div>
-          <input type="text" placeholder='usernamer'/>
+          <input type="text" placeholder='username'/>
           <input type="password" placeholder='password'/>
           <button><IoEnterOutline size={25} /></button>
         </div>
