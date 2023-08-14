@@ -48,6 +48,7 @@ const HomeContainer = styled.div`
         &:hover{
           background-color: var(--color-gray-1);
           color: var(--color-gray-4);
+          box-shadow: 0px 0px 10px rgba(0,0,0,0.90);
         }
       }
     }
