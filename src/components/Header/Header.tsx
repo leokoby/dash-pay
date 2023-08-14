@@ -50,14 +50,14 @@ const HeaderContainer = styled.nav`
 `
 export default function Header() {
   const [isMobile, setIsMobile] = React.useState(false)
-  const windowSize = window.screenX <= 1000
+  const windowSize = window.innerWidth <= 1000
 
   React.useEffect(() => {
     if(windowSize) setIsMobile(true)
   },[])
 
   window.addEventListener('resize', () => {
-    setIsMobile(window.innerWidth < 1000)
+    setIsMobile(window.innerWidth <= 1000)
   })
 
   return (
