@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import MenuMobile from './MenuMobile'
 
 const HeaderContainer = styled.nav`
   width: 100%;
@@ -30,7 +31,7 @@ const HeaderContainer = styled.nav`
           font-size: 1rem;
           color: var(--color-gray-2);
           transition: all 200ms ease-in-out;
-          padding: 0 10px;
+          padding: 0;
           border: 1px dashed transparent;
 
           &:hover{
@@ -40,15 +41,24 @@ const HeaderContainer = styled.nav`
         }
       }
     }
+
+    @media (max-width: 1000px) {
+      justify-content: space-between;
+      padding: 0 10px;
+    }
   }
 `
 export default function Header() {
   const [isMobile, setIsMobile] = React.useState(false)
+  const windowSize = window.screenX <= 1000
+
+  React.useEffect(() => {
+    if(windowSize) setIsMobile(true)
+  },[])
 
   window.addEventListener('resize', () => {
     setIsMobile(window.innerWidth < 1000)
   })
-
 
   return (
     <HeaderContainer>
@@ -56,12 +66,12 @@ export default function Header() {
         <span>
           <a href="/">DashPay</a>
         </span>
-        {isMobile && (
-          <div>
-            menumobile
-          </div>
-        )}
         <span>
+          {isMobile ? (
+            <>
+              <MenuMobile />
+            </>
+          ) : (
           <ul>
             <li>
               <a href="/">Home</a>
@@ -76,6 +86,7 @@ export default function Header() {
               <a href="/">Contact</a>
             </li>
           </ul>
+          )}
         </span>
       </div>      
     </HeaderContainer>
