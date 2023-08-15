@@ -1,14 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import {IoEnterOutline} from 'react-icons/io5'
+import Input from '../../components/Input/Input'
+import Register from './Register'
 
 const HomeContainer = styled.div`
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   height: calc(100vh - 60px);
   display: flex;
   align-items: center;
   
-  div{
+  .content-home{
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -31,15 +35,11 @@ const HomeContainer = styled.div`
       }
     }
 
-    div{
+    .inputs-login{
       display: flex;
       flex-direction:row;
+      gap: 10px;
       margin-top: 30px;
-
-      input{
-        padding: 10px;
-        border: 1px solid var(--color-gray-3);
-      }
 
       button{
         padding: 10px 15px;
@@ -61,7 +61,11 @@ const HomeContainer = styled.div`
 
   }
   @media (max-width: 1000px){
-    div{
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 200px;
+    gap: 30px;
+    .content-home{  
       h1{
         font-size: 2.2rem;
       }
@@ -70,7 +74,7 @@ const HomeContainer = styled.div`
         font-size: 1.3rem;
       }
 
-      div{
+      .inputs-login{
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
@@ -80,18 +84,27 @@ const HomeContainer = styled.div`
 `
 
 export default function Home() {
+  const [needRegister, setNeedRegister] = React.useState(false)
+
   return (
-    <HomeContainer>
-      <div>
-        <h1>Welcome to DashPay</h1>
-        <h3>Put yours bills that you need pay here</h3>
-        <div>
-          <input type="text" placeholder='username'/>
-          <input type="password" placeholder='password'/>
-          <button><IoEnterOutline size={25} /></button>
+    <React.Fragment>
+      <HomeContainer>
+        <div className='content-home'>
+          <h1>Welcome to DashPay</h1>
+          <h3>Put yours bills that you need pay here</h3>
+          <div className='inputs-login'>
+            <Input typeOfInput='text'  placeholder='username' nameOfInput='username'/>
+            <Input typeOfInput='password'  placeholder='password' nameOfInput='password'/>
+            <button><IoEnterOutline size={25} /></button>
+          </div>
+          <small>Dont't have account?<strong onClick={() => setNeedRegister(!needRegister)}>Register-se here!</strong></small>
         </div>
-        <small>Dont't have account?<strong> Register-se here!</strong></small>
-      </div>
-    </HomeContainer>
+      {needRegister ? (
+       <>
+       <Register />
+       </>
+      ) : null}
+      </HomeContainer>
+    </React.Fragment>
   )
 }
