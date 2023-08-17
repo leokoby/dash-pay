@@ -5,7 +5,8 @@ type InputProps = {
   typeOfInput: string;
   nameOfInput: string;
   placeholder: string;
-  onChange?: () => void;
+  onchange: React.ChangeEventHandler<HTMLInputElement>;
+  value: string
 };
 
 const InputComponent = styled.input`
@@ -17,7 +18,8 @@ export default function Input({
   typeOfInput,
   nameOfInput,
   placeholder,
-  onChange,
+  onchange,
+  value
 }: InputProps) {
   return (
     <React.Fragment>
@@ -25,7 +27,8 @@ export default function Input({
         type={typeOfInput}
         name={nameOfInput}
         placeholder={placeholder}
-        onChange={() => onChange}
+        onChange={onchange}
+        value={value}
       />
     </React.Fragment>
   );

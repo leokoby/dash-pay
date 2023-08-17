@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import {IoEnterOutline} from 'react-icons/io5'
 import Input from '../../components/Input/Input'
 import Register from './Register'
+import accountHooks from  '../../hooks/acocuntHooks'
 
 const HomeContainer = styled.div`
   width: 100%;
@@ -85,19 +86,22 @@ const HomeContainer = styled.div`
 
 export default function Home() {
   const [needRegister, setNeedRegister] = React.useState(false)
+  const [user, setUser] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const account = accountHooks();
 
   return (
     <React.Fragment>
-      <HomeContainer>
+      <HomeContainer> 
         <div className='content-home'>
           <h1>Welcome to DashPay</h1>
           <h3>Put yours bills that you need pay here</h3>
           <div className='inputs-login'>
-            <Input typeOfInput='text'  placeholder='username' nameOfInput='username'/>
-            <Input typeOfInput='password'  placeholder='password' nameOfInput='password'/>
-            <button><IoEnterOutline size={25} /></button>
+            <Input typeOfInput='text'  placeholder='username' nameOfInput='username' value={user} onchange={(e: React.ChangeEvent<HTMLInputElement>) => setUser(e.target.value)}/>
+            <Input typeOfInput='password'  placeholder='password' nameOfInput='password' value={password} onchange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+            <button onClick={() => account.loginUser(user, password)}><IoEnterOutline size={25} /></button>
           </div>
-          <small>Dont't have account?<strong onClick={() => setNeedRegister(!needRegister)}>Register-se here!</strong></small>
+          <small>Dont't have account?<strong onClick={() => setNeedRegister(!needRegister)}> Register-se here!</strong></small>
         </div>
       {needRegister ? (
        <>
