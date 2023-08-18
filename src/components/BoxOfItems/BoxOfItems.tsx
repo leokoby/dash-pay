@@ -43,7 +43,7 @@ const ItemList = styled.span`
 
 type TypeBox = {
   titleOfBox: string;
-  arrayOfItems: Items[];
+  arrayOfItems?: Items[];
 }
 
 type Items = {
@@ -65,7 +65,7 @@ export default function BoxOfItems({titleOfBox, arrayOfItems}: TypeBox) {
               <p>{item.value}</p>
             </ItemList>
           )
-        }): 'Don`t have any items on list'}
+        }): 'Don`t have any item on list'}
       </BoxofItemsContent>
     </BoxofItemsContainer>
   )

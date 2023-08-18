@@ -6,7 +6,7 @@ type InputProps = {
   nameOfInput: string;
   placeholder: string;
   onchange: React.ChangeEventHandler<HTMLInputElement>;
-  value: string
+  value: string | number
 };
 
 const InputComponent = styled.input`

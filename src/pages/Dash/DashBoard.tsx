@@ -22,23 +22,7 @@ const DashPageContainer = styled.div`
 `
 
 export default function DashBoard() {
-  const testeArray = [
-    {
-      title: "ITEM",
-      date: "12 JAN 2023",
-      value: 20
-    },
-    {
-      title: "ITEM",
-      date: "12 JAN 2023",
-      value: 20
-    },
-]
-  const test2 = [{
-    title: "Buy a car",
-    value: 200.00
-  }]
-  
+   
   return (
     <DashPageContainer>
       <div className='dash-content'>	
@@ -47,8 +31,8 @@ export default function DashBoard() {
           <MenuDashBoard />
         </section>
         <section>
-            <BoxOfItems titleOfBox='Bills:' arrayOfItems={testeArray}/>
-            <BoxOfItems titleOfBox='Objectives:' arrayOfItems={test2}/>
+            <BoxOfItems titleOfBox='Bills:' />
+            <BoxOfItems titleOfBox='Objectives:' />
         </section>
       </div>
     </DashPageContainer>
