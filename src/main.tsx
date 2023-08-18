@@ -5,15 +5,19 @@ import './index.css'
 
 import Home from './pages/Home/Home.tsx'
 import Header from './components/Header/Header.tsx'
+import DashBoard from './pages/Dash/DashBoard.tsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
     children: [
       {
         path: '/',
         element: <Home />
+      },
+      {
+        path: '/dash',
+        element: <DashBoard />
       }
     ]
   }
