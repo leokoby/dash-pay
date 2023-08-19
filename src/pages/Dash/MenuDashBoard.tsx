@@ -25,13 +25,41 @@ const MenuWrapper = styled.nav`
     }
   }
 `;
+
+
+const SelectWrapperComponent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  label{
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    select{
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid var(--color-gray-3);
+     
+    }
+  }
+
+`
+
 export default function MenuDashBoard() {
   const [addItem, setAddItem] = React.useState(false);
   const [itemInfos, setItemInfos] = React.useState({
     title: "",
     date: "",
-    valueOfItem: "0",
+    valueOfItem: "",
+    selectOption: ""
   });
+
+  const handleAddToDash = () =>{
+
+  }
+
 
   return (
     <MenuWrapper>
@@ -39,8 +67,9 @@ export default function MenuDashBoard() {
       <button>Add Cash</button>
       {addItem ? (
         <Modal
-          title="Add your bill"
+          title="Add your item"
           smallText="fill the fields below to add a bill in your dashboard"
+          setOpenModal={() => setAddItem(false)}
         >
           <Input
             typeOfInput="text"
@@ -49,7 +78,7 @@ export default function MenuDashBoard() {
             onchange={(e) =>
               setItemInfos({ ...itemInfos, title: e.target.value })
             }
-            placeholder="Item name"
+            placeholder="New Car"
           />
           <Input
             typeOfInput="text"
@@ -58,7 +87,7 @@ export default function MenuDashBoard() {
             onchange={(e) =>
               setItemInfos({ ...itemInfos, valueOfItem: e.target.value})
             }
-            placeholder="Item value"
+            placeholder="40.000,00"
           />
           <Input
             typeOfInput="text"
@@ -67,8 +96,18 @@ export default function MenuDashBoard() {
             onchange={(e) =>
               setItemInfos({ ...itemInfos, date: e.target.value })
             }
-            placeholder="Item date"
+            placeholder="12 jan 2023"
           />
+          <SelectWrapperComponent>
+            <label>
+              Select where you want add:
+              <select onChange={(e) => setItemInfos({...itemInfos, selectOption: e.target.value})}>
+                <option>Bills</option>
+                <option>Objectives</option>
+              </select>
+            </label>
+          </SelectWrapperComponent>
+          <button onClick={handleAddToDash}>Send</button>
         </Modal>
       ) : null}
     </MenuWrapper>
