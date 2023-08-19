@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import MenuDashBoard from './MenuDashBoard'
 import BoxOfItems from '../../components/BoxOfItems/BoxOfItems'
@@ -22,7 +22,6 @@ const DashPageContainer = styled.div`
 `
 
 export default function DashBoard() {
-   
   return (
     <DashPageContainer>
       <div className='dash-content'>	

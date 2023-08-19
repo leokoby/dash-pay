@@ -57,7 +57,17 @@ export default function MenuDashBoard() {
   });
 
   const handleAddToDash = () =>{
+    const arrayTemp = []
+    const getLocal = localStorage?.getItem(`${itemInfos.selectOption}`)
 
+    if(getLocal){
+      const parseLocal = JSON.parse(getLocal)
+      console.log(parseLocal, `parse`)
+      arrayTemp.push(...parseLocal, itemInfos)
+    }else{
+      arrayTemp.push(itemInfos)
+    }
+    window.localStorage.setItem(`${itemInfos.selectOption}`, JSON.stringify(arrayTemp))
   }
 
 
@@ -90,7 +100,7 @@ export default function MenuDashBoard() {
             placeholder="40.000,00"
           />
           <Input
-            typeOfInput="text"
+            typeOfInput="date"
             nameOfInput="itemDate"
             value={itemInfos.date}
             onchange={(e) =>
@@ -102,6 +112,7 @@ export default function MenuDashBoard() {
             <label>
               Select where you want add:
               <select onChange={(e) => setItemInfos({...itemInfos, selectOption: e.target.value})}>
+                <option selected disabled>Choose a option</option>
                 <option>Bills</option>
                 <option>Objectives</option>
               </select>

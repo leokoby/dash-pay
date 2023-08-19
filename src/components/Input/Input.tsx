@@ -12,6 +12,8 @@ type InputProps = {
 const InputComponent = styled.input`
   padding: 10px;
   border: 1px solid var(--color-gray-3);
+  width: 100%;
+  max-width: 200px;
 `;
 
 export default function Input({
