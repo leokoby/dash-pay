@@ -6,6 +6,7 @@ import './index.css'
 import Home from './pages/Home/Home.tsx'
 import Header from './components/Header/Header.tsx'
 import DashBoard from './pages/Dash/DashBoard.tsx'
+import AppContext from './context/AppContext.tsx'
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <Header/>
-    <RouterProvider router={router} />
+    <AppContext>
+      <Header/>
+      <RouterProvider router={router} />
+    </AppContext>
   </React.StrictMode>,
 )

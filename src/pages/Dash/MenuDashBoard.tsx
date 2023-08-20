@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext} from "react";
 import { styled } from "styled-components";
 import Modal from "../../components/Modal/Modal";
 import Input from "../../components/Input/Input";
+import { contextComponent } from "../../context/AppContext";
 
 const MenuWrapper = styled.nav`
   width: 100%;
@@ -48,6 +49,7 @@ const SelectWrapperComponent = styled.div`
 `
 
 export default function MenuDashBoard() {
+  const {bills, setBills} = useContext(contextComponent);
   const [addItem, setAddItem] = React.useState(false);
   const [itemInfos, setItemInfos] = React.useState({
     title: "",
@@ -62,10 +64,11 @@ export default function MenuDashBoard() {
 
     if(getLocal){
       const parseLocal = JSON.parse(getLocal)
-      console.log(parseLocal, `parse`)
       arrayTemp.push(...parseLocal, itemInfos)
+      setBills([...bills, itemInfos])
     }else{
       arrayTemp.push(itemInfos)
+      setBills([itemInfos])
     }
     window.localStorage.setItem(`${itemInfos.selectOption}`, JSON.stringify(arrayTemp))
   }

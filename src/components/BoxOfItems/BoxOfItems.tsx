@@ -57,7 +57,7 @@ export default function BoxOfItems({titleOfBox, arrayOfItems}: TypeBox) {
     <BoxofItemsContainer>
       <h3>{titleOfBox}</h3>
       <BoxofItemsContent>
-        {arrayOfItems ? arrayOfItems?.map((item) => {
+        {arrayOfItems?.length !== 0 ? arrayOfItems?.map((item) => {
           return (
             <ItemList>
               <p>{item.title}</p>
