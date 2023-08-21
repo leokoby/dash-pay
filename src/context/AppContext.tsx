@@ -1,26 +1,33 @@
-import React, { createContext, useState, ReactNode, useEffect } from 'react'
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 
-export const contextComponent = createContext(null)
+export const contextComponent = createContext(null);
 
 type ContextProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-export default function AppContext({children}: ContextProps) {
-  const [bills, setBills] = useState([])
-  const billOnLocal = localStorage.getItem("Bills")
-  const billParse = JSON.parse(billOnLocal)
+export default function AppContext({ children }: ContextProps) {
+  const [bills, setBills] = useState([]);
+  const [objectives, setObjectives] = useState([]);
+  const billOnLocal = localStorage.getItem("Bills");
+  const objectiveOnLocal = localStorage.getItem("Objectives");
+  const billParse = JSON.parse(billOnLocal);
+  const objectiveParse = JSON.parse(objectiveOnLocal);
 
-  useEffect(()=> {
-    if(billOnLocal?.length){
-      setBills(billParse)
+  useEffect(() => {
+    if (billOnLocal?.length) {
+      setBills(billParse);  
     }
-  },[])
-  console.log(billOnLocal)
+    if (objectiveOnLocal?.length) {
+      setObjectives(objectiveParse);
+    }
+  }, []);
 
   return (
-    <contextComponent.Provider value={{bills, setBills}}>
-     {children}
+    <contextComponent.Provider
+      value={{ bills, setBills, objectives, setObjectives }}
+    >
+      {children}
     </contextComponent.Provider>
-  )
+  );
 }

@@ -6,14 +6,18 @@ type InputProps = {
   nameOfInput: string;
   placeholder: string;
   onchange: React.ChangeEventHandler<HTMLInputElement>;
-  value: string | number
+  value: string | number,
+  inputMode?:string | undefined;
 };
 
 const InputComponent = styled.input`
   padding: 10px;
   border: 1px solid var(--color-gray-3);
   width: 100%;
-  max-width: 200px;
+  max-width: 250px;
+  @media (max-width: 1000px) {
+    max-width: unset;
+  }
 `;
 
 export default function Input({
@@ -21,7 +25,8 @@ export default function Input({
   nameOfInput,
   placeholder,
   onchange,
-  value
+  value,
+  inputMode
 }: InputProps) {
   return (
     <React.Fragment>
@@ -31,6 +36,7 @@ export default function Input({
         placeholder={placeholder}
         onChange={onchange}
         value={value}
+        inputMode={inputMode}
       />
     </React.Fragment>
   );

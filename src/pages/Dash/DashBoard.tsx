@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from 'react'
+import {useContext} from 'react'
 import { styled } from 'styled-components'
 import MenuDashBoard from './MenuDashBoard'
 import BoxOfItems from '../../components/BoxOfItems/BoxOfItems'
@@ -24,7 +24,12 @@ const DashPageContainer = styled.div`
 `
 
 export default function DashBoard() {
-  const {bills} = useContext(contextComponent);
+  const {
+    bills, 
+    objectives, 
+    setBills, 
+    setObjectives
+  } = useContext(contextComponent);
 
   return (
     <DashPageContainer>
@@ -34,8 +39,8 @@ export default function DashBoard() {
           <MenuDashBoard />
         </section>
         <section>
-            <BoxOfItems titleOfBox='Bills:' arrayOfItems={bills}/>
-            <BoxOfItems titleOfBox='Objectives:' />
+            <BoxOfItems titleOfBox='Bills' arrayOfItems={bills} setState={setBills}/>
+            <BoxOfItems titleOfBox='Objectives' arrayOfItems={objectives} setState={setObjectives}/>
         </section>
       </div>
     </DashPageContainer>
