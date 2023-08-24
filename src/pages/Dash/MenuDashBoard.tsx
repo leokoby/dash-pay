@@ -111,8 +111,9 @@ export default function MenuDashBoard() {
                 onChange={(e) =>
                   setItemInfos({ ...itemInfos, selectOption: e.target.value })
                 }
+                defaultValue={"Choose a option"}
               >
-                <option selected disabled>
+                <option disabled>
                   Choose a option
                 </option>
                 <option>Bills</option>

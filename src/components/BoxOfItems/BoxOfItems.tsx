@@ -1,3 +1,4 @@
+import React from 'react'
 import styled from "styled-components";
 import { currencyFormater } from "../../utils/utils";
 import {BsTrash} from "react-icons/bs"
@@ -67,6 +68,7 @@ export default function BoxOfItems({
   arrayOfItems,
   setState,
 }: TypeBox) {
+
   const deleteItem = (id: any, arr: any) => {
     const filteredArray = arr?.filter(
       (filterItem: any) => filterItem.title !== id
@@ -75,6 +77,11 @@ export default function BoxOfItems({
     localStorage.setItem(titleOfBox, JSON.stringify(filteredArray));
   };
 
+  const TotalValueOfBox = arrayOfItems?.reduce((a, b) => {
+    return a + Number(b.valueOfItem)
+},0)
+
+
   return (
     <BoxofItemsContainer>
       <h3>{titleOfBox}:</h3>
@@ -82,8 +89,8 @@ export default function BoxOfItems({
         {arrayOfItems?.length !== 0
           ? arrayOfItems?.map((item) => {
               return (
-                <>
-                  <ItemList key={item.title} id={item.title}>
+                <React.Fragment key={item.title}>
+                  <ItemList  id={item.title}>
                     <p>{item.title}</p>
                     <p>{item.date}</p>
                     <p>{currencyFormater(Number(item.valueOfItem))}</p>
@@ -91,10 +98,13 @@ export default function BoxOfItems({
                     <BsTrash size={24}/>
                   </button>
                   </ItemList>
-                </>
+                </React.Fragment>
               );
             })
           : "Don`t have any item on list"}
+          <div>
+            Total: {currencyFormater(TotalValueOfBox)}
+          </div>
       </BoxofItemsContent>
     </BoxofItemsContainer>
   );
