@@ -9,6 +9,9 @@ type InputProps = {
   value: string | number,
   inputMode?:string | undefined;
   labelText?: string
+  width?: string
+  height?: string
+  maxWidth?: string
 };
 
 const LabelText = styled.label`
@@ -19,11 +22,16 @@ const LabelText = styled.label`
     font-size: 0.8rem;
   }
   `;
-const InputComponent = styled.input`
+const InputComponent = styled.input<{
+  $widthInput?: string, 
+  $heigthInput?: string,
+  $maxWidth?: string
+  }>`
   padding: 10px;
   border: 1px solid var(--color-gray-3);
-  width: 100%;
-  max-width: 250px;
+  width:${props => props.$widthInput || "100%"};;
+  max-width: ${props => props.$maxWidth || "250px"};
+  height: ${props => props.$heigthInput || "100%"};;
   margin-top: 3px;
   @media (max-width: 1000px) {
     max-width: unset;
@@ -37,7 +45,10 @@ export default function Input({
   onchange,
   value,
   inputMode,
-  labelText
+  labelText,
+  width,
+  height,
+  maxWidth
 }: InputProps) {
   return (
     <React.Fragment>
@@ -50,6 +61,9 @@ export default function Input({
           onChange={onchange}
           value={value}
           inputMode={inputMode}
+          $widthInput={width}
+          $heigthInput={height}
+          $maxWidth={maxWidth}
         />
       </LabelText>
     </React.Fragment>

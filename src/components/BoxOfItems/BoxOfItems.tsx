@@ -11,18 +11,20 @@ const BoxofItemsContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   margin-bottom: 1rem;
-`;
+  background: #fff;
+  position: relative; 
+  `;
 const BoxofItemsContent = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 200px;
-  background: #fff;
+  max-height: 230px;
+  overflow: auto;
   padding: 20px;
 `;
 
 const ItemList = styled.span`
   width: 100%;
-  height: 100%;
+  height: 90%;
   padding: 10px;
   background: var(--color-gray-4);
   border: 1px solid var(--color-gray-3);
@@ -50,6 +52,13 @@ const ItemList = styled.span`
 
 `;
 
+const TotalContainer = styled.div`
+  position: absolute;
+  bottom: 10px;
+  right: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+`
 
 type TypeBox = {
   titleOfBox: string;
@@ -60,7 +69,7 @@ type TypeBox = {
 type Items = {
   title: string;
   date?: string;
-  valueOfItem?: number;
+  valueOfItem?: number ;
 };
 
 export default function BoxOfItems({
@@ -102,9 +111,9 @@ export default function BoxOfItems({
               );
             })
           : "Don`t have any item on list"}
-          <div>
-            Total: {currencyFormater(TotalValueOfBox)}
-          </div>
+          <TotalContainer>
+            Total: {currencyFormater(TotalValueOfBox ? TotalValueOfBox : 0)}
+          </TotalContainer>
       </BoxofItemsContent>
     </BoxofItemsContainer>
   );
