@@ -124,6 +124,7 @@ export default function MenuDashBoard() {
           {itemInfos.selectOption !== "" && (
             <>
               <Input
+                labelText={`${itemInfos.selectOption == "Bills" ? 'Bill name' : 'Objective name'}`}
                 typeOfInput="text"
                 nameOfInput="itemName"
                 value={itemInfos.title}
@@ -133,6 +134,7 @@ export default function MenuDashBoard() {
                 placeholder="New Car"
               />
               <Input
+                labelText={`${itemInfos.selectOption == "Bills" ? 'Bill value' : 'Objective value'}`}
                 typeOfInput="number"
                 nameOfInput="itemValue"
                 value={itemInfos.valueOfItem}
@@ -143,6 +145,7 @@ export default function MenuDashBoard() {
                 inputMode="decimal"
               />
               <Input
+                labelText={`${itemInfos.selectOption == "Bills" ? 'Date of purcharse' : 'Expected date'}`}
                 typeOfInput="date"
                 nameOfInput="itemDate"
                 value={itemInfos.date}
