@@ -15,4 +15,4 @@ function formatDate(value: string, country: string = 'pt-PT'){
 }
 
 
-export {currencyFormater, formatDate}
+export {currencyFormatter, formatDate}

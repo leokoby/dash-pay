@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { currencyFormater, formatDate } from "../../utils/utils";
+import { currencyFormatter, formatDate } from "../../utils/utils";
 import {BsTrash} from "react-icons/bs"
 
 const BoxofItemsContainer = styled.div`
@@ -112,7 +112,7 @@ export default function BoxOfItems({
                   <ItemList  id={item.title}>
                     <p>{item.title}</p>
                     <p>{item.date ? formatDate(item?.date, 'en-US') : null}</p>
-                    <p>{currencyFormater(Number(item.valueOfItem))}</p>
+                    <p>{currencyFormatter(Number(item.valueOfItem))}</p>
                   <button className="btn-remove" onClick={() => deleteItem(item.title, arrayOfItems)}>
                     <BsTrash size={24}/>
                   </button>
@@ -122,7 +122,7 @@ export default function BoxOfItems({
             })
           : "Don`t have any item on list"}
           <TotalContainer>
-            Total: {currencyFormater(TotalValueOfBox ? TotalValueOfBox : 0)}
+            Total: {currencyFormatter(TotalValueOfBox ? TotalValueOfBox : 0)}
           </TotalContainer>
       </BoxofItemsContent>
     </BoxofItemsContainer>
