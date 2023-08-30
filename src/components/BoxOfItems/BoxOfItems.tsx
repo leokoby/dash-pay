@@ -1,18 +1,23 @@
 import React from 'react'
 import styled from "styled-components";
-import { currencyFormater } from "../../utils/utils";
+import { currencyFormater, formatDate } from "../../utils/utils";
 import {BsTrash} from "react-icons/bs"
 
 const BoxofItemsContainer = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 300px;
+  min-height: 310px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 1rem;
   background: #fff;
   position: relative; 
+
+  h3{
+    padding: 10px 0 0 10px;
+    font-weight: 500;
+  }
   `;
 const BoxofItemsContent = styled.div`
   width: 100%;
@@ -48,6 +53,11 @@ const ItemList = styled.span`
     background: transparent;
     border: none;
     cursor: pointer;
+  }
+
+  p{
+   width:100%;
+   max-width: 200px;
   }
 
 `;
@@ -101,7 +111,7 @@ export default function BoxOfItems({
                 <React.Fragment key={item.title}>
                   <ItemList  id={item.title}>
                     <p>{item.title}</p>
-                    <p>{item.date}</p>
+                    <p>{item.date ? formatDate(item?.date, 'en-US') : null}</p>
                     <p>{currencyFormater(Number(item.valueOfItem))}</p>
                   <button className="btn-remove" onClick={() => deleteItem(item.title, arrayOfItems)}>
                     <BsTrash size={24}/>
