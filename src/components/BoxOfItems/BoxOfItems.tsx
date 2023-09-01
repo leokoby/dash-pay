@@ -1,18 +1,23 @@
 import React from 'react'
 import styled from "styled-components";
-import { currencyFormater } from "../../utils/utils";
+import { currencyFormatter, formatDate } from "../../utils/utils";
 import {BsTrash} from "react-icons/bs"
 
 const BoxofItemsContainer = styled.div`
   width: 100%;
   height: 100%;
-  min-height: 300px;
+  min-height: 310px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 1rem;
   background: #fff;
   position: relative; 
+
+  h3{
+    padding: 10px 0 0 10px;
+    font-weight: 500;
+  }
   `;
 const BoxofItemsContent = styled.div`
   width: 100%;
@@ -40,7 +45,7 @@ const ItemList = styled.span`
   &:hover {
     background: var(--color-gray-2);
     color: var(--color-gray-4);
-    transform: translateX(4px);
+    transform: scale(1.01);
     box-shadow: 2px 2px 10px rgba(165, 165, 165, 0.69);
   }
 
@@ -48,6 +53,11 @@ const ItemList = styled.span`
     background: transparent;
     border: none;
     cursor: pointer;
+  }
+
+  p{
+   width:100%;
+   max-width: 200px;
   }
 
 `;
@@ -101,10 +111,10 @@ export default function BoxOfItems({
                 <React.Fragment key={item.title}>
                   <ItemList  id={item.title}>
                     <p>{item.title}</p>
-                    <p>{item.date}</p>
-                    <p>{currencyFormater(Number(item.valueOfItem))}</p>
+                    <p>{item.date ? formatDate(item?.date, 'en-US') : null}</p>
+                    <p>{currencyFormatter(Number(item.valueOfItem))}</p>
                   <button className="btn-remove" onClick={() => deleteItem(item.title, arrayOfItems)}>
-                    <BsTrash size={24}/>
+                    <BsTrash size={20}/>
                   </button>
                   </ItemList>
                 </React.Fragment>
@@ -112,7 +122,7 @@ export default function BoxOfItems({
             })
           : "Don`t have any item on list"}
           <TotalContainer>
-            Total: {currencyFormater(TotalValueOfBox ? TotalValueOfBox : 0)}
+            Total: {currencyFormatter(TotalValueOfBox ? TotalValueOfBox : 0)}
           </TotalContainer>
       </BoxofItemsContent>
     </BoxofItemsContainer>

@@ -64,6 +64,7 @@ export default function MenuDashBoard() {
     selectOption: "",
   });
 
+
   const handleAddToDash = () => {
     const arrayTemp = [];
     const getLocal = localStorage?.getItem(`${itemInfos.selectOption}`);

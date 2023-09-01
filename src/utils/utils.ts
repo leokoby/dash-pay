@@ -1,4 +1,4 @@
-const currencyFormater = (value: number) => {
+const currencyFormatter = (value: number) => {
   const valueFormater = new Intl.NumberFormat('pt-pt', {
     style: "currency",
     currency: "EUR"
@@ -7,4 +7,12 @@ const currencyFormater = (value: number) => {
   return valueFormater
 }
 
-export {currencyFormater}
+function formatDate(value: string, country: string = 'pt-PT'){
+  const options =  {day: 'numeric' , year: 'numeric', month: 'long', };
+  const date = new Date(value).toLocaleDateString(country, options)
+
+  return date
+}
+
+
+export {currencyFormatter, formatDate}
