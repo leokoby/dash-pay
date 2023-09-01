@@ -45,7 +45,7 @@ const ItemList = styled.span`
   &:hover {
     background: var(--color-gray-2);
     color: var(--color-gray-4);
-    transform: translateX(4px);
+    transform: scale(1.01);
     box-shadow: 2px 2px 10px rgba(165, 165, 165, 0.69);
   }
 
@@ -114,7 +114,7 @@ export default function BoxOfItems({
                     <p>{item.date ? formatDate(item?.date, 'en-US') : null}</p>
                     <p>{currencyFormatter(Number(item.valueOfItem))}</p>
                   <button className="btn-remove" onClick={() => deleteItem(item.title, arrayOfItems)}>
-                    <BsTrash size={24}/>
+                    <BsTrash size={20}/>
                   </button>
                   </ItemList>
                 </React.Fragment>
